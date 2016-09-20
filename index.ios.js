@@ -15,7 +15,7 @@ import {
 import rootReducer from './app/reducers/rootReducer';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import Clock from './app/components/clock';
+import Timer from './app/components/clock.react';
 
 const initialState = {
   screen: {
@@ -24,7 +24,7 @@ const initialState = {
     xMid: 0,
     yMid: 0
   },
-  
+
   clock: {
     diameter: 99,
     strokeWidth: 2.5,
@@ -38,26 +38,15 @@ const store = createStore(
   initialState
 );
 
-const Timer = () => {
-  console.log('store age us *****************************', store.getState())
-  return <Provider store={store}><Clock /></Provider>;
+const TimerClock = () => {
+  return <Provider store={store}><Timer /></Provider>;
 };
 
 class TimeIt extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Timer />
-        <Text style={styles.welcome}>
-          Welcome to this Appitude...* 
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <TimerClock />
       </View>
     );
   }
@@ -68,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#82caff'
   },
   welcome: {
     fontSize: 20,
