@@ -70,7 +70,7 @@ const Face = (props) => {
   );
 };
 
-const Clock = (props) => {
+let Clock = (props) => {
   const {
     clock,
     screen
@@ -135,6 +135,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const Timer = connect(mapStateToProps)(Clock);
+Clock = connect(mapStateToProps)(Clock);
 
-export default Timer;
+export default Clock;

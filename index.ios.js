@@ -15,7 +15,7 @@ import {
 import rootReducer from './app/reducers/rootReducer';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import Timer from './app/components/clock.react';
+import Clock from './app/components/clock.react';
 
 const initialState = {
   screen: {
@@ -39,7 +39,7 @@ const store = createStore(
 );
 
 const TimerClock = () => {
-  return <Provider store={store}><Timer /></Provider>;
+  return <Provider store={store}><Clock /></Provider>;
 };
 
 class TimeIt extends Component {
