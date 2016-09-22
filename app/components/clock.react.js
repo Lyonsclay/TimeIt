@@ -24,8 +24,8 @@ const Hand = (props) => {
 
   return (
     <Svg width={width} height={height}>
-      <Line
-        x1={radius}
+    <Line
+    x1={radius}
         y1={0.20 * radius}
         x2={radius}
         y2={radius}
