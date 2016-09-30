@@ -1,41 +1,46 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import 'react-native';
 import Clock from '../../app/components/Clock';
+import Face from '../../app/components/Face';
+import Hand from '../../app/components/Hand';
 import Svg, { Text } from 'react-native-svg';
+/* import renderer from 'react-test-renderer';*/
+import utils from 'react-addons-test-utils';
 
-const Component = (props) => {
-  return <Svg width={props.w} height={props.h}><Text>{JSON.stringify(props.happy)}</Text></Svg>;
-};
+describe('render Clock with Jest', () => {
+  const initialState = {
+    screen: {
+      width: 0,
+      height: 0,
+      xMid: 0,
+      yMid: 0
+    },
 
-describe('Test Svg Text with Enzyme', () => {
-  it('shallow renders', () => {
-    happy = { happy: 'happy', h: 120, w: 420 };
-    component = React.createElement(Component, happy);
-    const wrapper = shallow(component);
-    expect(wrapper.props().height).toBe(120);
-  });
-});
+    clock: {
+      diameter: 99,
+      strokeWidth: 2.5,
+      duration: 0.0,
+      moving: false
+    }
+  };
+  const renderer = utils.createRenderer();
+  renderer.render(<Clock {...initialState} />);
+  const output = renderer.getRenderOutput();
 
-describe('Clock', () => {
   it('renders', () => {
-    const initialState = {
-      screen: {
-        width: 0,
-        height: 0,
-        xMid: 0,
-        yMid: 0
-      },
+    expect(output.props.children[0].props.radius).toEqual(49.5);
+    expect(output.props.children.length).toEqual(2);
+  });
 
-      clock: {
-        diameter: 99,
-        strokeWidth: 2.5,
-        duration: 0.0,
-        moving: false
-      }
+  it('renders a children components', () => {
+    const props = {
+      strokeWidth: 2.5,
+      width: 101.5,
+      height: 101.5,
+      radius: 49.5
     };
-
-    const component = React.createElement('Clock', initialState);
-    const wrapper = shallow(component);
-    expect(wrapper).toBeDefined();
+    const text = <Text>Hello</Text>;
+    const face = React.createElement('Face', props);
+    expect(output.props.children[0].props).toEqual(face.props);
   });
 });

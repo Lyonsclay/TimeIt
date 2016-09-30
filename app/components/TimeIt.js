@@ -6,10 +6,10 @@ import {
   View
 } from 'react-native';
 
-import rootReducer from './app/reducers/rootReducer';
+import rootReducer from '../reducers/rootReducer';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import Clock from './app/containers/AnimatedClock';
+import Clock from '../containers/ClockAnimated';
 
 const initialState = {
   screen: {

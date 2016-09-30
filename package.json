@@ -7,11 +7,7 @@
     "test": "jest"
   },
   "jest": {
-    "preset": "jest-react-native",
-    "unmockedModulePatterns": [
-      "node_modules/react/",
-      "node_modules/enzyme/"
-    ]
+    "preset": "jest-react-native"
   },
   "dependencies": {
     "react": "15.3.2",
