@@ -37,3 +37,6 @@ const Face = (props) => {
     </Svg>
   );
 };
+
+export default Face;
+//

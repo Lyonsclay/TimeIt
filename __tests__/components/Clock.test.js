@@ -35,8 +35,7 @@ describe('render Clock with Jest', () => {
   it('renders a children components', () => {
     const props = {
       strokeWidth: 2.5,
-      width: 101.5,
-      height: 101.5,
+      width: 101.5, height: 101.5,
       radius: 49.5
     };
     const text = <Text>Hello</Text>;

@@ -1,0 +1,321 @@
+exports[`Face renders 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function buildPredicate],
+    "childrenOfNode": [Function childrenOfNode],
+    "findWhereUnwrapped": [Function findWhereUnwrapped]
+  },
+  "length": 1,
+  "node": <View>
+    <function Face(props){var
+    
+    width=
+    
+    
+    
+    props.width;var height=props.height;var radius=props.radius;var strokeWidth=props.strokeWidth;
+    var cx=radius+strokeWidth/2;
+    var cy=cx;
+    var faceStyle={
+    position:'absolute'};
+    
+    
+    return(
+    _react2.default.createElement(_reactNativeSvg2.default,{
+    style:faceStyle,
+    width:width,
+    height:height},
+    
+    _react2.default.createElement(_reactNativeSvg.Circle,{
+    cx:cx,
+    cy:cy,
+    r:radius,
+    fill:'#a0cfec',
+    fillOpacity:'1',
+    stroke:'#728c00',
+    strokeWidth:strokeWidth})));
+    
+    
+    
+    }
+        height={101.5}
+        radius={49.5}
+        strokeWidth={2.5}
+        width={101.5} />
+</View>,
+  "nodes": Array [
+    <View>
+      <function Face(props){var
+      
+      width=
+      
+      
+      
+      props.width;var height=props.height;var radius=props.radius;var strokeWidth=props.strokeWidth;
+      var cx=radius+strokeWidth/2;
+      var cy=cx;
+      var faceStyle={
+      position:'absolute'};
+      
+      
+      return(
+      _react2.default.createElement(_reactNativeSvg2.default,{
+      style:faceStyle,
+      width:width,
+      height:height},
+      
+      _react2.default.createElement(_reactNativeSvg.Circle,{
+      cx:cx,
+      cy:cy,
+      r:radius,
+      fill:'#a0cfec',
+      fillOpacity:'1',
+      stroke:'#728c00',
+      strokeWidth:strokeWidth})));
+      
+      
+      
+      }
+            height={101.5}
+            radius={49.5}
+            strokeWidth={2.5}
+            width={101.5} />
+</View>
+  ],
+  "options": Object {},
+  "renderer":  {
+    "_instance":  {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <function Component(){_classCallCheck(this,Component);return _possibleConstructorReturn(this,(Component.__proto__||Object.getPrototypeOf(Component)).apply(this,arguments));}>
+        <function Face(props){var
+        
+        width=
+        
+        
+        
+        props.width;var height=props.height;var radius=props.radius;var strokeWidth=props.strokeWidth;
+        var cx=radius+strokeWidth/2;
+        var cy=cx;
+        var faceStyle={
+        position:'absolute'};
+        
+        
+        return(
+        _react2.default.createElement(_reactNativeSvg2.default,{
+        style:faceStyle,
+        width:width,
+        height:height},
+        
+        _react2.default.createElement(_reactNativeSvg.Circle,{
+        cx:cx,
+        cy:cy,
+        r:radius,
+        fill:'#a0cfec',
+        fillOpacity:'1',
+        stroke:'#728c00',
+        strokeWidth:strokeWidth})));
+        
+        
+        
+        }
+                height={101.5}
+                radius={49.5}
+                strokeWidth={2.5}
+                width={101.5} />
+</function Component(){_classCallCheck(this,Component);return _possibleConstructorReturn(this,(Component.__proto__||Object.getPrototypeOf(Component)).apply(this,arguments));}>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Component {
+        "_reactInternalInstance": [Circular],
+        "blur": [Function bound ],
+        "context": Object {},
+        "focus": [Function bound ],
+        "measure": [Function bound ],
+        "measureInWindow": [Function bound ],
+        "measureLayout": [Function bound ],
+        "props": Object {
+          "children": <function Face(props){var
+
+width=
+
+
+
+props.width;var height=props.height;var radius=props.radius;var strokeWidth=props.strokeWidth;
+var cx=radius+strokeWidth/2;
+var cy=cx;
+var faceStyle={
+position:'absolute'};
+
+
+return(
+_react2.default.createElement(_reactNativeSvg2.default,{
+style:faceStyle,
+width:width,
+height:height},
+
+_react2.default.createElement(_reactNativeSvg.Circle,{
+cx:cx,
+cy:cy,
+r:radius,
+fill:'#a0cfec',
+fillOpacity:'1',
+stroke:'#728c00',
+strokeWidth:strokeWidth})));
+
+
+
+}
+            height={101.5}
+            radius={49.5}
+            strokeWidth={2.5}
+            width={101.5} />
+        },
+        "refs": Object {},
+        "setNativeProps": [Function bound ],
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function anonymous],
+          "enqueueCallbackInternal": [Function anonymous],
+          "enqueueElementInternal": [Function anonymous],
+          "enqueueForceUpdate": [Function anonymous],
+          "enqueueReplaceState": [Function anonymous],
+          "enqueueSetState": [Function anonymous],
+          "isMounted": [Function anonymous],
+          "validateCallback": [Function anonymous]
+        }
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": Object {
+        "_currentElement": <View>
+          <function Face(props){var
+          
+          width=
+          
+          
+          
+          props.width;var height=props.height;var radius=props.radius;var strokeWidth=props.strokeWidth;
+          var cx=radius+strokeWidth/2;
+          var cy=cx;
+          var faceStyle={
+          position:'absolute'};
+          
+          
+          return(
+          _react2.default.createElement(_reactNativeSvg2.default,{
+          style:faceStyle,
+          width:width,
+          height:height},
+          
+          _react2.default.createElement(_reactNativeSvg.Circle,{
+          cx:cx,
+          cy:cy,
+          r:radius,
+          fill:'#a0cfec',
+          fillOpacity:'1',
+          stroke:'#728c00',
+          strokeWidth:strokeWidth})));
+          
+          
+          
+          }
+                    height={101.5}
+                    radius={49.5}
+                    strokeWidth={2.5}
+                    width={101.5} />
+</View>,
+        "_debugID": 2,
+        "_renderedOutput": <View>
+          <function Face(props){var
+          
+          width=
+          
+          
+          
+          props.width;var height=props.height;var radius=props.radius;var strokeWidth=props.strokeWidth;
+          var cx=radius+strokeWidth/2;
+          var cy=cx;
+          var faceStyle={
+          position:'absolute'};
+          
+          
+          return(
+          _react2.default.createElement(_reactNativeSvg2.default,{
+          style:faceStyle,
+          width:width,
+          height:height},
+          
+          _react2.default.createElement(_reactNativeSvg.Circle,{
+          cx:cx,
+          cy:cy,
+          r:radius,
+          fill:'#a0cfec',
+          fillOpacity:'1',
+          stroke:'#728c00',
+          strokeWidth:strokeWidth})));
+          
+          
+          
+          }
+                    height={101.5}
+                    radius={49.5}
+                    strokeWidth={2.5}
+                    width={101.5} />
+</View>
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false
+    },
+    "getRenderOutput": [Function getRenderOutput],
+    "render": [Function render]
+  },
+  "root": [Circular],
+  "unrendered": <function Component(){_classCallCheck(this,Component);return _possibleConstructorReturn(this,(Component.__proto__||Object.getPrototypeOf(Component)).apply(this,arguments));}>
+    <function Face(props){var
+    
+    width=
+    
+    
+    
+    props.width;var height=props.height;var radius=props.radius;var strokeWidth=props.strokeWidth;
+    var cx=radius+strokeWidth/2;
+    var cy=cx;
+    var faceStyle={
+    position:'absolute'};
+    
+    
+    return(
+    _react2.default.createElement(_reactNativeSvg2.default,{
+    style:faceStyle,
+    width:width,
+    height:height},
+    
+    _react2.default.createElement(_reactNativeSvg.Circle,{
+    cx:cx,
+    cy:cy,
+    r:radius,
+    fill:'#a0cfec',
+    fillOpacity:'1',
+    stroke:'#728c00',
+    strokeWidth:strokeWidth})));
+    
+    
+    
+    }
+        height={101.5}
+        radius={49.5}
+        strokeWidth={2.5}
+        width={101.5} />
+</function Component(){_classCallCheck(this,Component);return _possibleConstructorReturn(this,(Component.__proto__||Object.getPrototypeOf(Component)).apply(this,arguments));}>
+}
+`;

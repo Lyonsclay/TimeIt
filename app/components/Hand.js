@@ -3,6 +3,7 @@ import {
   View
 } from 'react-native';
 import Svg, {
+  Circle,
   Line
 } from 'react-native-svg';
 
@@ -10,9 +11,9 @@ const Hand = (props) => {
   const {
     width,
     height,
-    radius,
-    strokeWidth
+    radius
   } = props;
+  const strokeWidth = props.clock.strokeWidth;
 
   return (
     <Svg width={width} height={height}>
@@ -28,3 +29,5 @@ const Hand = (props) => {
     </Svg>
   );
 };
+
+export default Hand;
