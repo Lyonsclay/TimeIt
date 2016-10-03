@@ -1,9 +1,9 @@
 import React from 'react';
-import 'react-native';
+import { View } from 'react-native';
 import Clock from '../../app/components/Clock';
 import Face from '../../app/components/Face';
 import Hand from '../../app/components/Hand';
-import Svg, { Text } from 'react-native-svg';
+import Svg, { Circle, Line, Text } from 'react-native-svg';
 import utils from 'react-addons-test-utils';
 import containsComponent from '../../__test_helpers__/contains_component';
 
@@ -25,9 +25,9 @@ describe('render Clock with Jest', () => {
   const renderer = utils.createRenderer();
   renderer.render(<Clock {...initialState} />);
   const clock = renderer.getRenderOutput();
-  
+
   it('renders', () => {
-    expect(clock).toBeDefined() 
+    expect(clock).toBeDefined()
   });
 
   it('renders children with props', () => {
@@ -47,7 +47,17 @@ describe('render Clock with Jest', () => {
   });
 
   it('has a Face', () => {
+
+  const renderer = utils.createRenderer();
+    renderer.render(<Clock {...initialState} />);
+    const clock = renderer.getRenderOutput();
+
+    console.log('****************** Clock ^^^^^^^^^^^^^^^^^hh')
+    const children = clock.props.children
+    console.log(children);
+
     /* expect(clock).toEqual({});*/
-    expect(containsComponent(clock, 'Component')).toBe(true);
+    /* expect(containsComponent(clock, 'Clock')).toBe(true);*/
+    expect(containsComponent(clock, 'Face')).toBe(true);
   });
 });

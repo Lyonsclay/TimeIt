@@ -1,10 +1,15 @@
 const containsComponent = (object, componentName) => {
   if (object.type === componentName) { return true; }
   let match;
-  let hasMultipleChildren;
+  /* let hasMultipleChildren;*/
+
   const children = getChildren(object);
 
-  if (checkCustomImported(children, componentName)) { return true; }
+  if (children && children.length) {
+    checkCustomImportedChildren(children, componentName);
+  } else {
+    checkCustomImportedChild(children, componentName);
+  }
 
   if (children && children.length) {
     match = children.some((child) => getClassName(child) === componentName);
@@ -24,22 +29,35 @@ const containsComponent = (object, componentName) => {
 };
 
 const checkCustomImported = (children, componentName) => {
+};
+
+const checkCustomImportedChild = (child, componentName) => {
   let match = false;
   //single child
-  if (children && children.type && children.type.name) {
-    if (children.type.name === componentName) { match = true; }
+  if (child && child.type && child.type.name) {
+    if (child.type.name === componentName) { match = true; }
     console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ never before or after children.type')
-    console.log(children.type.name)
+    console.log(child.type.name)
   }
 
-  //multiple children
-  if (children && children[0] && children[0].type && children[0].type.name) {
-    if (children[0].type.name === componentName) { match = true; }
-    console.log('$$$$$$$[0]$$$$$$$$[0]$$$$$$$$[0]$$$$$$$ never or after children.type')
-    console.log(children[0].type.name)
-  }
   return match;
-}
+};
+
+const checkCustomImportedChildren = (children, componentName) => {
+  return children.some((child) => { checkTypeName(child, componentName)});
+};
+
+const checkTypeName = (child, componentName) => {
+  let match = false;
+
+  if (child.type && child.type.name) {
+    console.log('#################################### stuffin')
+    console.log(child.type.name);
+    if (child.type.name === componentName) { match = true; }
+  }
+
+  return match;
+};
 
 const getClassName = (object) => {
   /* return object.constructor.name;*/
