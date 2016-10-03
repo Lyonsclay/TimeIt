@@ -4,8 +4,8 @@ import Clock from '../../app/components/Clock';
 import Face from '../../app/components/Face';
 import Hand from '../../app/components/Hand';
 import Svg, { Text } from 'react-native-svg';
-/* import renderer from 'react-test-renderer';*/
 import utils from 'react-addons-test-utils';
+import containsComponent from '../../__test_helpers__/contains_component';
 
 describe('render Clock with Jest', () => {
   const initialState = {
@@ -15,7 +15,6 @@ describe('render Clock with Jest', () => {
       xMid: 0,
       yMid: 0
     },
-
     clock: {
       diameter: 99,
       strokeWidth: 2.5,
@@ -25,21 +24,30 @@ describe('render Clock with Jest', () => {
   };
   const renderer = utils.createRenderer();
   renderer.render(<Clock {...initialState} />);
-  const output = renderer.getRenderOutput();
-
+  const clock = renderer.getRenderOutput();
+  
   it('renders', () => {
-    expect(output.props.children[0].props.radius).toEqual(49.5);
-    expect(output.props.children.length).toEqual(2);
+    expect(clock).toBeDefined() 
   });
 
-  it('renders a children components', () => {
+  it('renders children with props', () => {
+    expect(clock.props.children[0].props.radius).toEqual(49.5);
+    expect(clock.props.children[1].props.style.position).toEqual('absolute');
+    expect(clock.props.children.length).toEqual(2);
+  });
+
+  it('renders a child with props', () => {
     const props = {
       strokeWidth: 2.5,
       width: 101.5, height: 101.5,
       radius: 49.5
     };
-    const text = <Text>Hello</Text>;
-    const face = React.createElement('Face', props);
-    expect(output.props.children[0].props).toEqual(face.props);
+
+    expect(clock.props.children[0].props).toEqual(props);
+  });
+
+  it('has a Face', () => {
+    /* expect(clock).toEqual({});*/
+    expect(containsComponent(clock, 'Component')).toBe(true);
   });
 });
