@@ -18,7 +18,7 @@ describe('Round', () => {
   it('dont know', () => {
     const roundClass = new round.type();
 
-    expect(roundClass.constructor.name).toEqual('Component');
+    expect(roundClass.constructor.name).toEqual('Svg');
   });
 });
 
@@ -48,4 +48,19 @@ describe('containsComponent', () => {
       expect(containsComponent(circle, 'Circle')).toEqual(true);
     });
   });
+
+  describe('with a user defined component', () => {
+    renderer.render(<View><Round {...props} /></View>);
+    const circle = renderer.getRenderOutput();
+    const props = {
+      strokeWidth: 2.5,
+      width: 101.5, height: 101.5,
+      radius: 49.5
+    };
+    round = renderer.getRenderOutput();
+
+    fit('renders', () => {
+      expect(containsComponent(round, 'Circle')).toBe(true);
+    })
+  })
 });

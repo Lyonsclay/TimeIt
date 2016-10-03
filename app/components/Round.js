@@ -21,7 +21,6 @@ class Round extends React.Component {
       position: 'absolute'
     };
     return (
-      <View>
         <Svg style={faceStyle} width={width} height={height}>
           <Circle
             cx={cx}
@@ -33,7 +32,6 @@ class Round extends React.Component {
             strokeWidth={strokeWidth}
           />
         </Svg>
-      </View>
     );
   }
 }
