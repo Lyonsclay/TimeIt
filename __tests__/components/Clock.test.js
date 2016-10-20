@@ -32,7 +32,6 @@ describe('render Clock with Jest', () => {
 
   it('renders children with props', () => {
     expect(clock.props.children[0].props.radius).toEqual(49.5);
-    expect(clock.props.children[1].props.style.position).toEqual('absolute');
     expect(clock.props.children.length).toEqual(2);
   });
 

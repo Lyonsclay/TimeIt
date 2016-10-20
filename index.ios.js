@@ -15,21 +15,21 @@ import {
 import rootReducer from './app/reducers/rootReducer';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import Clock from './app/components/clock.react';
+import TimerView from './app/containers/TimerView'
 
 const initialState = {
+  app: {
+    showTimeSet: false
+  },
   screen: {
     width: 0,
-    height: 0,
-    xMid: 0,
-    yMid: 0
+    height: 0
   },
-
   clock: {
     diameter: 99,
     strokeWidth: 2.5,
     duration: 0.0,
-    moving: false
+    running: false
   }
 };
 
@@ -38,37 +38,8 @@ const store = createStore(
   initialState
 );
 
-const TimerClock = () => {
-  return <Provider store={store}><Clock /></Provider>;
+const TimeIt = () => {
+  return <Provider store={store}><TimerView /></Provider>;
 };
-
-class TimeIt extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <TimerClock />
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#82caff'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('TimeIt', () => TimeIt);

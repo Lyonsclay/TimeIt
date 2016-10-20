@@ -11,9 +11,9 @@ const Hand = (props) => {
   const {
     width,
     height,
-    radius
+    radius,
+    strokeWidth
   } = props;
-  const strokeWidth = props.clock.strokeWidth;
 
   return (
     <Svg width={width} height={height}>
