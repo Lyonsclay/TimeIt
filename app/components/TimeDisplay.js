@@ -3,26 +3,29 @@ import { View, Text, StyleSheet } from 'react-native'
 
 const ShowTime = ({duration}) => {
   return (
-      <Text style={styles.time}>
-        {duration.toString()}
-      </Text>
+    <Text style={styles.time}>
+      {duration.toString()}
+    </Text>
   )
 }
 
 const styles = StyleSheet.create({
   time: {
     fontSize: 28,
-    color: 'green'
+    color: '#493d26',
   },
   view: {
-    height: 100
+    flex: 1,
+    justifyContent: 'flex-end',
+    height: 100,
+    marginBottom: 40
   }
 })
 
 const TimeDisplay = (props) => {
   return (
-    <View style={styles.view}>
-    {(props.app.showTimeSet) ? <ShowTime {...props.clock} /> : []}
+    <View flexShrink={0} style={styles.view}>
+      {(props.app.timerView[0] !== 'CLOCK') ? <ShowTime {...props.clock} /> : []}
     </View>
   )
 }

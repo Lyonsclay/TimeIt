@@ -19,7 +19,8 @@ import TimerView from './app/containers/TimerView'
 
 const initialState = {
   app: {
-    showTimeSet: false
+    showSetTime: false,
+    timerView: ['CLOCK', 'SELECT', 'START', 'PAUSE']
   },
   screen: {
     width: 0,

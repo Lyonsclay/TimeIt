@@ -5,18 +5,20 @@ import Clock from '../components/Clock';
 import TimerInput from '../components/TimerInput'
 import TimeDisplay from '../components/TimeDisplay'
 import {
-  showTimeSet,
-  hideTimeSet,
+  toggleSetTime,
+  toggleTimer,
   setDuration
 } from '../actions'
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     flexDirection: 'column',
     flex: 1,
-    backgroundColor: '#82caff'
+    backgroundColor: '#82caff',
+    backgroundColor: '#786d5f',
+    backgroundColor: '#e5efe3'
   }
 });
 
@@ -40,9 +42,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showTimeSet: () => dispatch(showTimeSet()),
-    hideTimeSet: () => dispatch(hideTimeSet()),
-    setDuration: (duration) => dispatch(setDuration(duration))
+    toggleSetTime: () => dispatch(toggleSetTime()),
+    toggleTimer: () => dispatch(toggleTimer()),
+    setDuration: (duration) => dispatch(setDuration(duration)),
   }
 }
 const TimerView = connect(mapStateToProps, mapDispatchToProps)(Timer);

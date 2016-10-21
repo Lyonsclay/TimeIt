@@ -5,8 +5,7 @@ import {
   connect
 } from 'react-redux'
 import {
-  showTimeSet,
-  hideTimeSet
+  toggleSetTime
 } from '../actions'
 import {
   StyleSheet,
@@ -37,13 +36,12 @@ const Clock = (props) => {
   const height = width;
   const clockStyle = {}
 
-  const _showTimeSet = () => {
-    alert(JSON.stringify(props))
-    props.showTimeSet()
+  const _toggleTimer = () => {
+    props.toggleTimer()
   }
 
   return (
-    <TouchableOpacity onPress={props.showTimeSet}>
+    <TouchableOpacity onPress={props.toggleTimer}>
       <View style={styles.container}>
         <Face
           strokeWidth={clock.strokeWidth}
@@ -67,7 +65,7 @@ const Clock = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0
+    flex: 2
   }
 });
 
@@ -77,7 +75,6 @@ const styles = StyleSheet.create({
  * }
  * const mapDispatchToProps = (dispatch) => {
  *   return {
- *     showTimeSet: () => dispatch(showTimeSet()),
  *     hideTimeSet: () => dispatch(hideTimeSet())
  *   }
  * }*/

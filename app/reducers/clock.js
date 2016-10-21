@@ -1,4 +1,8 @@
-import { SET_DURATION, START, STOP } from '../actions';
+import {
+  SET_DURATION,
+  START,
+  STOP
+} from '../actions';
 
 function clock(state = {}, action) {
   switch(action.type) {

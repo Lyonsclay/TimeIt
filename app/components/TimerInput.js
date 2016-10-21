@@ -1,43 +1,52 @@
 import React, { Component } from 'react'
-import { PickerIOS, View, Text } from 'react-native'
+import { Picker, View, Text, StyleSheet } from 'react-native'
 
-const DurationPicker = (props) => {
+const DurationPicker = ({props}) => {
   const scrollStyle = {
-    flex: 0,
+    flex: 4,
     width: 100,
   }
   const numberStyle = {
     fontSize: 28,
-    color: 'orange'
+    color: '#493d26',
   }
-  const Item = PickerIOS.Item
+  const Item = Picker.Item
   const minutes = [...Array(60)].map((t, i) => i.toString())
-  let time = '0'
   const label = 'Time It'
 
   return (
-      <PickerIOS
-        selectedValue={props.clock.duration}
-        style={scrollStyle}
-        onValueChange={props.setDuration}
-      >
-        {minutes.map((n, i) =>
-          <Item
-            key={i}
-            value={i}
-            label={n}
-          />
-         )}
-      </PickerIOS>
+    <Picker
+      selectedValue={props.clock.duration}
+      style={scrollStyle}
+      onValueChange={(duration) => props.setDuration(duration)}
+      itemStyle={numberStyle}
+    >
+      {minutes.map((n, i) =>
+        <Item
+          key={i}
+          value={i}
+          label={n}
+        />
+       )}
+    </Picker>
   )
 }
 
-const SetTimer = (props) => {
+const styles = StyleSheet.create({
+  view: {
+    flex: 2,
+    height: 100,
+    marginTop: 50,
+    justifyContent: 'space-between'
+  }
+})
+
+const SetTime = (props) => {
   return (
-    <View>
-  {(props.app.showTimeSet) ? <DurationPicker props={props} /> : []}
-  </View>
-)
+    <View style={styles.view}>
+      {(props.app.timerView[0] === 'SELECT') ? <DurationPicker props={props} /> : []}
+    </View>
+  )
 }
 
-export default DurationPicker
+export default SetTime

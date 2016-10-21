@@ -1,14 +1,18 @@
 import {
-  SHOW_TIME_SET,
-  HIDE_TIME_SET
+  TOGGLE_SET_TIME,
+  TOGGLE_TIMER
 } from '../actions'
+
+const rotate = (array) => {
+  return array.slice(1).concat(array[0])
+}
 
 function app(state = {}, action) {
   switch(action.type) {
-    case SHOW_TIME_SET:
-      return Object.assign({}, state, { showTimeSet: true })
-    case HIDE_TIME_SET:
-      return Object.assign({}, state, { showTimeSet: false })
+    case TOGGLE_SET_TIME:
+      return Object.assign({}, state, { showSetTime: !state.showSetTime })
+    case TOGGLE_TIMER:
+      return Object.assign({}, state, { timerView: rotate(state.timerView) })
     default:
       return state
   }

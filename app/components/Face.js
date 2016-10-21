@@ -30,6 +30,7 @@ const Face = (props) => {
         cy={cy}
         r={radius}
         fill='#a0cfec'
+        fill='#ebedd2'
         fillOpacity='1'
         stroke='#728c00'
         strokeWidth={strokeWidth}
