@@ -24,7 +24,7 @@ const DurationPicker = ({props}) => {
       {minutes.map((n, i) =>
         <Item
           key={i}
-          value={i}
+          value={n}
           label={n}
         />
        )}

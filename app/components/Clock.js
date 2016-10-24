@@ -35,11 +35,14 @@ const Clock = (props) => {
   const width = diameter + clock.strokeWidth;
   const height = width;
   const clockStyle = {}
-
-  const _toggleTimer = () => {
-    props.toggleTimer()
-  }
-
+  
+  /* 
+   *   if (props.app.timerView === 'START') {
+   *     props.start()
+   *   } else if (props.app.timerView === 'PAUSE') {
+   *     props.stop()
+   *   }
+   * */
   return (
     <TouchableOpacity onPress={props.toggleTimer}>
       <View style={styles.container}>
@@ -48,6 +51,7 @@ const Clock = (props) => {
           width={width}
           height={height}
           radius={radius}
+          {...props}
         />
         <View style={clockStyle} >
           <Hand
@@ -56,6 +60,7 @@ const Clock = (props) => {
             width={width}
             height={height}
             radius={radius}
+            {...props}
           />
         </View>
       </View>

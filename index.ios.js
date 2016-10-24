@@ -30,7 +30,8 @@ const initialState = {
     diameter: 99,
     strokeWidth: 2.5,
     duration: 0.0,
-    running: false
+    running: false,
+    alarm: false
   }
 };
 
@@ -38,6 +39,7 @@ const store = createStore(
   rootReducer,
   initialState
 );
+
 
 const TimeIt = () => {
   return <Provider store={store}><TimerView /></Provider>;

@@ -1,15 +1,16 @@
 import {
   SET_DURATION,
   START,
-  STOP
+  STOP,
+  TOGGLE_ALARM
 } from '../actions';
 
 function clock(state = {}, action) {
   switch(action.type) {
     case SET_DURATION:
-      const duration = action.payload.duration;
-
-      return Object.assign({}, state, { duration });
+      return Object.assign({}, state, {
+        duration: action.payload.duration
+      });
     case START:
       return Object.assign({}, state, {
         running: true
@@ -18,6 +19,10 @@ function clock(state = {}, action) {
       return Object.assign({}, state, {
         running: false
       });
+    case TOGGLE_ALARM:
+      return Object.assign({}, state, {
+        alarm: !state.alarm
+      })
     default:
       return state;
   }

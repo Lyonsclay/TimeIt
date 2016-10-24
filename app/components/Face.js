@@ -1,9 +1,11 @@
 import React from 'react';
 import {
-  View
+  View,
+  Animated,
+  Easing
 } from 'react-native';
 import Svg, {
-  Circle
+  Circle, G
 } from 'react-native-svg';
 
 const Face = (props) => {
@@ -16,8 +18,32 @@ const Face = (props) => {
   const cx = radius + strokeWidth / 2;
   const cy = cx;
   const faceStyle = {
-    position: 'absolute'
+    position: 'absolute',
   };
+  const pulse = new Animated.Value(0)
+
+  const visualAlarm = () => {
+    Animated.sequence([
+      Animated.timing(
+        pulse,
+        {
+          toValue: 1,
+          duration: 250,
+          easing: Easing.linear
+        }),
+      Animated.timing(
+        pulse,
+        {
+          toValue: 0,
+          duration: 250,
+          easing: Easing.ease
+        })
+    ]
+    ).start(visualAlarm)
+  }
+
+  if (props.clock.alarm && (props.app.timerView[0] === 'PAUSE')) {visualAlarm()
+  }
 
   return (
     <Svg
@@ -29,12 +55,28 @@ const Face = (props) => {
         cx={cx}
         cy={cy}
         r={radius}
-        fill='#a0cfec'
-        fill='#ebedd2'
         fillOpacity='1'
+        fill='orange'
         stroke='#728c00'
         strokeWidth={strokeWidth}
       />
+      <Animated.View style={{opacity: pulse}}>
+        <Svg
+          style={faceStyle}
+          width={width}
+          height={height}
+        >
+          <Circle
+            cx={cx}
+            cy={cy}
+            r={radius}
+            fill='red'
+            fillOpacity='1'
+            stroke='#728c00'
+            strokeWidth={strokeWidth}
+          />
+        </Svg>
+      </Animated.View>
     </Svg>
   );
 };

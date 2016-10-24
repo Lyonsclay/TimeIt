@@ -5,9 +5,11 @@ import Clock from '../components/Clock';
 import TimerInput from '../components/TimerInput'
 import TimeDisplay from '../components/TimeDisplay'
 import {
-  toggleSetTime,
   toggleTimer,
-  setDuration
+  setDuration,
+  toggleAlarm,
+  start,
+  stop
 } from '../actions'
 
 const styles = StyleSheet.create({
@@ -42,9 +44,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleSetTime: () => dispatch(toggleSetTime()),
     toggleTimer: () => dispatch(toggleTimer()),
     setDuration: (duration) => dispatch(setDuration(duration)),
+    toggleAlarm: () => dispatch(toggleAlarm()),
+    start: () => dispatch(start()),
+    stop: () => dispatch(stop())
   }
 }
 const TimerView = connect(mapStateToProps, mapDispatchToProps)(Timer);

@@ -1,6 +1,6 @@
 import {
-  TOGGLE_SET_TIME,
-  TOGGLE_TIMER
+  TOGGLE_TIMER,
+  ALERT
 } from '../actions'
 
 const rotate = (array) => {
@@ -9,8 +9,6 @@ const rotate = (array) => {
 
 function app(state = {}, action) {
   switch(action.type) {
-    case TOGGLE_SET_TIME:
-      return Object.assign({}, state, { showSetTime: !state.showSetTime })
     case TOGGLE_TIMER:
       return Object.assign({}, state, { timerView: rotate(state.timerView) })
     default:
