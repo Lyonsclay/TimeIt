@@ -31,10 +31,10 @@ const Hand = (props) => {
   const _finish = () => {
     props.toggleTimer()
     props.toggleAlarm()
-    props.stop()
+    props.end()
   }
 
-  if (props.app.timerView[0] === 'START') {
+  if (props.app.timerMode[0] === 'START') {
     Animated.timing(
       wind,
       {

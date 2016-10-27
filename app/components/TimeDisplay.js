@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 const TimeDisplay = (props) => {
   return (
     <View flexShrink={0} style={styles.view}>
-      {(props.app.timerView[0] !== 'CLOCK') ? <ShowTime {...props.clock} /> : []}
+      {(props.app.timerMode[0] !== 'CLOCK') ? <ShowTime {...props.clock} /> : []}
     </View>
   )
 }

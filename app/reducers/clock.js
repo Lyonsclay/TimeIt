@@ -1,7 +1,7 @@
 import {
   SET_DURATION,
   START,
-  STOP,
+  END,
   TOGGLE_ALARM
 } from '../actions';
 
@@ -15,7 +15,7 @@ function clock(state = {}, action) {
       return Object.assign({}, state, {
         running: true
       });
-    case STOP:
+    case END:
       return Object.assign({}, state, {
         running: false
       });

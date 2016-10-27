@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 const SetTime = (props) => {
   return (
     <View style={styles.view}>
-      {(props.app.timerView[0] === 'SELECT') ? <DurationPicker props={props} /> : []}
+      {(props.app.timerMode[0] === 'SELECT') ? <DurationPicker props={props} /> : []}
     </View>
   )
 }

@@ -5,9 +5,6 @@ import {
   connect
 } from 'react-redux'
 import {
-  toggleSetTime
-} from '../actions'
-import {
   StyleSheet,
   View,
   TouchableOpacity
@@ -37,14 +34,15 @@ const Clock = (props) => {
   const clockStyle = {}
   
   /* 
-   *   if (props.app.timerView === 'START') {
+   *   if (props.app.timerMode === 'START') {
    *     props.start()
-   *   } else if (props.app.timerView === 'PAUSE') {
-   *     props.stop()
+   *   } else if (props.app.timerMode === 'PAUSE') {
+   *     props.end()
    *   }
    * */
+
   return (
-    <TouchableOpacity onPress={props.toggleTimer}>
+    <TouchableOpacity onPress={props.advanceTimerMode}>
       <View style={styles.container}>
         <Face
           strokeWidth={clock.strokeWidth}

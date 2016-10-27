@@ -1,39 +1,40 @@
 import { createStore } from 'redux';
 import rootReducer from '../../app/reducers/rootReducer';
-import { start, stop, setDuration, setScreenSize } from '../../app/actions';
+import {
+  advanceTimerMode,
+  reverseTimerMode,
+  end,
+  setDuration,
+  setRemainder,
+  setScreenSize
+} from '../../app/actions';
+const initialState = {
+  app: {
+    state_machine: ['INIT', 'SELECT', 'RUN', 'FREEZE']
+  },
+  timer: {
+    duration: 0,
+    current_time: 0,
+  },
+  screen: {
+    width: 0,
+    height: 0,
+  },
+  clock: {
+    alarm: false,
+  },
+
+};
 
 describe('clock reducer', () => {
-  const initialState = {
-    clock: {
-      running: false, 
-      duration: 0.0
-    }
-  };
   const store = createStore(rootReducer, initialState);
 
-  it('starts the clock', () => {
-    store.dispatch(start());
-
-    const stateAfter = store.getState();
-
-    expect(stateAfter.clock.running).toBe(true);
-  });
-
-  it('stops the clock', () => {
-    store.dispatch(start());
-    store.dispatch(stop());
-
-    const stateAfter = store.getState();
-
-    expect(stateAfter.clock.running).toBe(false);
-  });
-
   it('sets the duration', () => {
-    store.dispatch(setDuration(30.0));
+    store.dispatch(setDuration(3000));
 
     const stateAfter = store.getState();
 
-    expect(stateAfter.clock.duration).toBe(30.0);
+    expect(stateAfter.timer.duration).toBe(3000);
   });
 });
 

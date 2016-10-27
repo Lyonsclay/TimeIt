@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import app from './app'
+import timer from './timer'
 import screen from './screen';
 import clock from './clock';
-import app from './app'
 
-const rootReducer = combineReducers({screen, clock, app});
+const rootReducer = combineReducers({app, timer, screen, clock});
 export default rootReducer;

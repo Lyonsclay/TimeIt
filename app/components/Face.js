@@ -42,7 +42,7 @@ const Face = (props) => {
     ).start(visualAlarm)
   }
 
-  if (props.clock.alarm && (props.app.timerView[0] === 'PAUSE')) {visualAlarm()
+  if (props.clock.alarm && (props.app.timerMode[0] === 'PAUSE')) {visualAlarm()
   }
 
   return (
