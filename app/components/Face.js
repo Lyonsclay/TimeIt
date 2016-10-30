@@ -20,7 +20,7 @@ const Face = (props) => {
   const faceStyle = {
     position: 'absolute',
   };
-  const pulse = new Animated.Value(0)
+  let pulse = new Animated.Value(0)
 
   const visualAlarm = () => {
     Animated.sequence([
@@ -41,8 +41,14 @@ const Face = (props) => {
     ]
     ).start(visualAlarm)
   }
+  const activateAlarm = ((props.timer.remainder === 0) && (props.app.mode[0] === 'FREEZE'))
+  const alarmStyle = (activateAlarm) ? { opacity: pulse } : {} 
+    
+  
 
-  if (props.clock.alarm && (props.app.timerMode[0] === 'PAUSE')) {visualAlarm()
+
+  if (activateAlarm) {
+    visualAlarm()
   }
 
   return (
@@ -60,7 +66,7 @@ const Face = (props) => {
         stroke='#728c00'
         strokeWidth={strokeWidth}
       />
-      <Animated.View style={{opacity: pulse}}>
+      <Animated.View style={alarmStyle}>
         <Svg
           style={faceStyle}
           width={width}
@@ -70,7 +76,7 @@ const Face = (props) => {
             cx={cx}
             cy={cy}
             r={radius}
-            fill='red'
+            fill='#e5efe3'
             fillOpacity='1'
             stroke='#728c00'
             strokeWidth={strokeWidth}

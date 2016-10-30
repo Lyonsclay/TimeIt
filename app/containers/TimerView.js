@@ -4,16 +4,18 @@ import { connect } from 'react-redux';
 import Clock from '../components/Clock';
 import TimerInput from '../components/TimerInput'
 import TimeDisplay from '../components/TimeDisplay'
-iimport {
-  setScreen,
-  advanceTimerMode,
-  reverseTimerMode,
+import {
+  advanceAppMode,
+  reverseAppMode,
 } from '../actions/app'
-mport {
+import {
   setDuration,
   setCurentTime,
   setRemainder,
 } from '../actions/timer'
+import {
+  setScreen
+} from '../actions/screen'
 
 const styles = StyleSheet.create({
   container: {
@@ -41,6 +43,7 @@ const mapStateToProps = (state) => {
   return {
     app: state.app,
     screen: state.screen,
+    timer: state.timer,
     clock: state.clock
   };
 };
@@ -49,8 +52,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setDuration: (duration) => dispatch(setDuration(duration)),
     setScreenSize: () => dispatch(setScreenSize()),
-    advanceTimerMode: () => dispatch(advanceTimerMode()),
-    reverseTimerMode: () => dispatc(reverseTimerMode())
+    advanceAppMode: () => dispatch(advanceAppMode()),
+    reverseAppMode: () => dispatc(reverseAppMode())
   }
 }
 const TimerView = connect(mapStateToProps, mapDispatchToProps)(Timer);

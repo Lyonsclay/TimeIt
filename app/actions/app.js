@@ -1,16 +1,16 @@
 export const SET_SCREEN_SIZE = 'SET_SCREEN_SIZE';
-export const ADVANCE_MODE = 'ADVANCE_MODE'
-export const REVERSE_MODE = 'REVERSE_MODE'
+export const ADVANCE_APP_MODE = 'ADVANCE_APP_MODE'
+export const REVERESE_APP_MODE = 'REVERSE_TIMER_MODE'
 
 export function setScreenSize(width, height) {
   return { type: SET_SCREEN_SIZE, payload: { width, height } };
 }
 
-export function advanceTimerMode() {
-  return { type: ADVANCE_MODE }
+export function advanceAppMode() {
+  return { type: ADVANCE_APP_MODE }
 }
 
-export function reverseTimerMode() {
-  return { type: REVERSE_MODE }
+export function reverseAppMode() {
+  return { type: REVERESE_APP_MODE }
 }
 

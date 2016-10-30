@@ -1,10 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import RunDisplay from './RunDisplay'
 
 const ShowTime = ({duration}) => {
   return (
     <Text style={styles.time}>
-      {duration.toString()}
+      {duration}
     </Text>
   )
 }
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
 const TimeDisplay = (props) => {
   return (
     <View flexShrink={0} style={styles.view}>
-      {(props.app.timerMode[0] !== 'CLOCK') ? <ShowTime {...props.clock} /> : []}
+    {(props.app.mode[0] === 'RUN') ? <RunDisplay {...props.timer} /> : <ShowTime {...props.timer} />}
     </View>
   )
 }

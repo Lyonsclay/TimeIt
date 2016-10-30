@@ -1,9 +1,11 @@
 import {
-  ADVANCE_MODE,
-  REVERSE_MODE,
-} from '../actions'
+  ADVANCE_APP_MODE,
+  REVERSE_APP_MODE,
+} from '../actions/app'
 
 const advance = (array) => {
+  console.log('************ array ******************')
+  console.log(array)
   return array.slice(1).concat(array[0])
 }
 
@@ -13,10 +15,10 @@ const reverse = (array) => {
 
 function app(state = {}, action) {
   switch(action.type) {
-    case ADVANCE_MODE:
-      return Object.assign({}, state, { timerMode: advance(state.timerMode) })
-    case REVERSE_MODE:
-      return Object.assign({}, state, { timerMode: reverse(state.timerMode) })
+    case ADVANCE_APP_MODE:
+      return Object.assign({}, state, { mode: advance(state.mode) })
+    case REVERSE_APP_MODE:
+      return Object.assign({}, state, { mode: reverse(state.mode) })
     default:
       return state
   }

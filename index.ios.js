@@ -19,11 +19,12 @@ import TimerView from './app/containers/TimerView'
 
 const initialState = {
   app: {
-    timerMode: ['CLOCK', 'SELECT', 'START', 'PAUSE']
+    mode: ['INIT', 'SELECT', 'RUN', 'FREEZE']
   },
   timer: {
-    duration: 0,
+    duration: 30,
     startTime: 0,
+    remainder: 0,
   },
   screen: {
     width: 0,
@@ -32,7 +33,6 @@ const initialState = {
   clock: {
     diameter: 99,
     strokeWidth: 2.5,
-    alarm: false
   }
 }
 

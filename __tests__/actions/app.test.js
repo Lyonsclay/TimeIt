@@ -1,8 +1,8 @@
 import * as actions from '../../app/actions/app'
 import {
  SET_SCREEN_SIZE,
- ADVANCE_TIMER_MODE,
- REVERSE_TIMER_MODE,
+ ADVANCE_APP_MODE,
+REVERESE_APP_MODE,
 } from '../../app/actions/app'
 
 const types = actions.types
@@ -17,11 +17,11 @@ describe('app', () => {
     expect(actions.setScreenSize(0, 0)).toEqual(expectedAction)
   })
 
-  it('advanceTimerMode', () => {
+  it('advanceAppMode', () => {
     const expectedAction = {
-      type: ADVANCE_TIMER_MODE
+      type: ADVANCE_APP_MODE
     }
 
-    expect(actions.advanceTimerMode()).toEqual(advanceTimerMode)
+    expect(actions.advanceAppMode()).toEqual(expectedAction)
   })
 })

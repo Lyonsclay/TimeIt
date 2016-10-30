@@ -9,10 +9,6 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
-import Svg, {
-  Circle,
-  Line
-} from 'react-native-svg';
 import Face from './Face';
 import Hand from './Hand';
 
@@ -21,40 +17,28 @@ const Clock = (props) => {
     clock,
     screen
   } = props
-  const diameter = clock.diameter;
-  const radius = diameter / 2;
   const {
-    xMid,
-    yMid
-  } = screen;
-  const top = yMid - radius;
-  const left = xMid - radius;
-  const width = diameter + clock.strokeWidth;
-  const height = width;
-  const clockStyle = {}
-  
-  /* 
-   *   if (props.app.timerMode === 'START') {
-   *     props.start()
-   *   } else if (props.app.timerMode === 'PAUSE') {
-   *     props.end()
-   *   }
-   * */
+    diameter,
+    strokeWidth
+  } = clock
+  const radius = diameter / 2 + 2.5
+  const width = diameter + strokeWidth * 2
+  const height = width
 
   return (
-    <TouchableOpacity onPress={props.advanceTimerMode}>
+    <TouchableOpacity onPress={props.advanceAppMode}>
       <View style={styles.container}>
         <Face
-          strokeWidth={clock.strokeWidth}
-          width={width}
-          height={height}
+          strokeWidth={strokeWidth}
+          width={width + strokeWidth}
+          height={height + strokeWidth}
           radius={radius}
           {...props}
         />
-        <View style={clockStyle} >
+        <View style={styles.clock} >
           <Hand
-            style={clockStyle}
-            strokeWidth={clock.strokeWidth}
+            style={styles.clock}
+            strokeWidth={strokeWidth}
             width={width}
             height={height}
             radius={radius}
@@ -69,17 +53,10 @@ const Clock = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 2
+  },
+  clock: {
+    
   }
 });
-
-/* 
- * const mapStateToProps = (state) => {
- *   return state
- * }
- * const mapDispatchToProps = (dispatch) => {
- *   return {
- *     hideTimeSet: () => dispatch(hideTimeSet())
- *   }
- * }*/
 
 export default Clock;

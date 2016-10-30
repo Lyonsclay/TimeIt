@@ -8,8 +8,7 @@ import {
 describe('timer', () => {
   it('setDuration', () => {
     const expectedAction = {
-      type: SET_SCREEN_SIZE,
-      payload: { duration: 30000 },
+      type: SET_DURATION, payload: { duration: 30000 },
     } 
 
     expect(actions.setDuration(30000)).toEqual(expectedAction)

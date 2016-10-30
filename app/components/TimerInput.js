@@ -16,7 +16,7 @@ const DurationPicker = ({props}) => {
 
   return (
     <Picker
-      selectedValue={props.clock.duration}
+      selectedValue={props.timer.duration}
       style={scrollStyle}
       onValueChange={(duration) => props.setDuration(duration)}
       itemStyle={numberStyle}
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 const SetTime = (props) => {
   return (
     <View style={styles.view}>
-      {(props.app.timerMode[0] === 'SELECT') ? <DurationPicker props={props} /> : []}
+      {(props.app.mode[0] === 'SELECT') ? <DurationPicker props={props} /> : []}
     </View>
   )
 }

@@ -1,13 +1,18 @@
 import { createStore } from 'redux';
 import rootReducer from '../../app/reducers/rootReducer';
 import {
-  advanceTimerMode,
-  reverseTimerMode,
-  end,
+  advanceAppMode,
+  reverseAppMode,
+} from '../../app/actions/app'
+import {
+  setScreenSize,
+} from '../../app/actions/screen'
+import {
   setDuration,
+  setCurrentTime,
   setRemainder,
-  setScreenSize
-} from '../../app/actions';
+} from '../../app/actions/timer'
+
 const initialState = {
   app: {
     state_machine: ['INIT', 'SELECT', 'RUN', 'FREEZE']
@@ -18,7 +23,7 @@ const initialState = {
   },
   screen: {
     width: 0,
-    height: 0,
+    height: 0
   },
   clock: {
     alarm: false,
@@ -39,12 +44,6 @@ describe('clock reducer', () => {
 });
 
 describe('screen reducer', () => {
-  const initialState = {
-    screen: {
-      width: 0,
-      height: 0
-    }
-  };
   const store = createStore(rootReducer, initialState);
 
   it('sets the screen dimensions', () => {
