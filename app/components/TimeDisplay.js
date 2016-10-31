@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 const TimeDisplay = (props) => {
   return (
     <View flexShrink={0} style={styles.view}>
-    {(props.app.mode[0] === 'RUN') ? <RunDisplay {...props.timer} /> : <ShowTime {...props.timer} />}
+    {(props.app.mode[0] === 'RUN') ? <RunDisplay {...props} /> : <ShowTime {...props.timer} />}
     </View>
   )
 }
