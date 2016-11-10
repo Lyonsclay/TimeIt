@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Clock from '../components/Clock';
 import TimerInput from '../components/TimerInput'
 import TimeDisplay from '../components/TimeDisplay'
+import RunDisplay from '../components/RunDisplay'
 import {
   advanceAppMode,
   reverseAppMode,
