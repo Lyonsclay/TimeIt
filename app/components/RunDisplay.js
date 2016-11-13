@@ -1,67 +1,61 @@
 import React, { Component } from 'react'
-import { View, Text, Picker, Animated, Easing, StyleSheet } from 'react-native'
+import {
+  View,
+  Text,
+  Easing,
+  StyleSheet,
+  Animated
+} from 'react-native'
 
 class RunDisplay extends Component {
   constructor(props) {
     super(props)
-    let countDown
+    const duration = props.timer.duration
+
     this.state = {
-      countDown: new Animated.Value(30),
-      spin: 30
+      spin: duration,
+      interval: 960,
     }
   }
-  componentDidMount() {
-    this.state.countDown.setValue(0)
-    Animated.timing(
-      this.state.countDown,
-      {
-        toValue: 30,
-        duration: 3000
-      }
-    ).start()
+
+  decrement() {
+    if (this.state.spin > 0) {
+      this.setState({ spin: this.state.spin - 1 })
+    }
   }
 
-  spinner(n) {
-    setTimeout(
-      () => { console.log('I do not leak!'); },
-      500
-    );
-   this.setState({ spin: n }) 
+  componentWillMount() {
+    const mode = this.props.app.mode[0]
+
+    if (mode === 'RUN') {
+      this.windDown = setInterval(() => {
+        this.decrement()
+      }, this.state.interval)
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.windDown)
   }
 
   render() {
-    const scrollStyle = {
-      flex: 4,
-      width: 100,
-    }
-    const numberStyle = {
-      fontSize: 28,
-      color: '#493d26',
-    }
-    const Item = Picker.Item
-    const minutes = [...Array(60)].map((t, i) => i.toString())
-    const AnimatedPicker = Animated.createAnimatedComponent(Picker)
-
     return (
-      <Animated.View>
-        <AnimatedPicker
-          selectedValue={this.state.spin}
-          onValueChange={(n) => this.spinner(n)}
-          style={scrollStyle}
-          itemStyle={[numberStyle]}
-        >
-          {minutes.map((n, i) =>
-            <Item
-              key={i}
-              value={i}
-              label={n}
-            />
-           )}
-        </AnimatedPicker>
-        <Text>{this.state.spin}</Text>
-      </Animated.View>
+      <View style={styles.view}>
+        <Text style={styles.time}>{this.state.spin}</Text>
+      </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  view: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  time: {
+    fontSize: 28,
+    color: '#493d26',
+  },
+})
 
 export default RunDisplay

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Picker, View, Text, StyleSheet } from 'react-native'
 
-const DurationPicker = ({props}) => {
+const DurationPicker = (props) => {
   const scrollStyle = {
-    flex: 4,
+    flex: 1,
     width: 100,
   }
   const numberStyle = {
@@ -12,7 +12,6 @@ const DurationPicker = ({props}) => {
   }
   const Item = Picker.Item
   const minutes = [...Array(60)].map((t, i) => i.toString())
-  const label = 'Time It'
 
   return (
     <Picker
@@ -31,22 +30,19 @@ const DurationPicker = ({props}) => {
     </Picker>
   )
 }
-
-const styles = StyleSheet.create({
-  view: {
-    flex: 2,
-    height: 100,
-    marginTop: 50,
-    justifyContent: 'space-between'
-  }
-})
-
 const SetTime = (props) => {
   return (
     <View style={styles.view}>
-      {(props.app.mode[0] === 'SELECT') ? <DurationPicker props={props} /> : []}
+       <DurationPicker {...props} />
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  view: {
+    flex: 1,
+    height: 100,
+  }
+})
 
 export default SetTime

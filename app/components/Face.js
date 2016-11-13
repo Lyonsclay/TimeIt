@@ -43,9 +43,6 @@ const Face = (props) => {
   }
   const activateAlarm = ((props.timer.remainder === 0) && (props.app.mode[0] === 'FREEZE'))
   const alarmStyle = (activateAlarm) ? { opacity: pulse } : {} 
-    
-  
-
 
   if (activateAlarm) {
     visualAlarm()

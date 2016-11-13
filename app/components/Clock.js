@@ -7,6 +7,7 @@ import {
 import {
   StyleSheet,
   View,
+  Text,
   TouchableOpacity
 } from 'react-native';
 import Face from './Face';
@@ -26,8 +27,7 @@ const Clock = (props) => {
   const height = width
 
   return (
-    <TouchableOpacity onPress={props.advanceAppMode}>
-      <View style={styles.container}>
+      <TouchableOpacity onPress={props.advanceAppMode}>
         <Face
           strokeWidth={strokeWidth}
           width={width + strokeWidth}
@@ -45,17 +45,14 @@ const Clock = (props) => {
             {...props}
           />
         </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2
   },
   clock: {
-    
   }
 });
 

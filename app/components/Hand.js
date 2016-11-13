@@ -28,8 +28,11 @@ const Hand = (props) => {
     }]
   }
 
-  const _finish = () => {
-    props.advanceAppMode()
+  const _finish = (status) => {
+    if (status.finished) {
+      props.advanceAppMode()
+      props.setRemainder(0)
+    }
   }
 
   if (props.app.mode[0] === 'RUN') {

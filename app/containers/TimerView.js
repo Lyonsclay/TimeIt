@@ -3,8 +3,8 @@ import { StyleSheet, View, ScrollView } from 'react-native'
 import { connect } from 'react-redux';
 import Clock from '../components/Clock';
 import TimerInput from '../components/TimerInput'
-import TimeDisplay from '../components/TimeDisplay'
 import RunDisplay from '../components/RunDisplay'
+import ResetContinue from '../components/ResetContinue'
 import {
   advanceAppMode,
   reverseAppMode,
@@ -24,21 +24,47 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'column',
     flex: 1,
-    backgroundColor: '#82caff',
     backgroundColor: '#786d5f',
     backgroundColor: '#e5efe3'
+  },
+  nothing: {
+    flex: 1,
+    backgroundColor: '#82caff',
   }
 });
 
-const Timer = (props) => {
-  return (
-    <View style={styles.container}>
-      <TimeDisplay {...props} />
-      <Clock {...props} />
-      <TimerInput {...props} />
-    </View>
-  )
+const Nothing = () => (
+  <View style={styles.nothing}/>
+)
+
+const Lower = (props) => {
+  switch(props.app.mode[0]) {
+    case 'FREEZE':
+      return (<ResetContinue {...props} />)
+    case 'SELECT':
+      return (<TimerInput {...props} />)
+    default:
+      return (<Nothing />)
+  }
 }
+
+const Upper = (props) => {
+  switch(props.app.mode[0]) {
+    case 'RUN':
+      return (<RunDisplay {...props} />)
+    default:
+      /* return (<ShowTime {...props} />)*/
+      return (<Nothing />)
+  }
+}
+
+const Timer = (props) => (
+  <View style={styles.container}>
+    <Upper {...props} />
+    <Clock {...props} />
+    <Lower {...props}/>
+  </View>
+)
 
 const mapStateToProps = (state) => {
   return {
@@ -52,11 +78,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setDuration: (duration) => dispatch(setDuration(duration)),
+    setRemainder: (remainder) => dispatch(setRemainder(remainder)),
     setScreenSize: () => dispatch(setScreenSize()),
     advanceAppMode: () => dispatch(advanceAppMode()),
-    reverseAppMode: () => dispatc(reverseAppMode())
+    reverseAppMode: () => dispatch(reverseAppMode())
   }
 }
+
 const TimerView = connect(mapStateToProps, mapDispatchToProps)(Timer);
 
 export default TimerView;

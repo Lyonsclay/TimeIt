@@ -4,8 +4,6 @@ import {
 } from '../actions/app'
 
 const advance = (array) => {
-  console.log('************ array ******************')
-  console.log(array)
   return array.slice(1).concat(array[0])
 }
 
