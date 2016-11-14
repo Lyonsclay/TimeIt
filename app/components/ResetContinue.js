@@ -16,7 +16,7 @@ const ResetContinue = (props) => (
       onHover={glow}
       onPress={props.advanceAppMode}
       title="RESET"
-      color="red"
+      color="brown"
       />
     <Button
       onPress={props.reverseAppMode}
@@ -28,12 +28,9 @@ const ResetContinue = (props) => (
 
 const styles = StyleSheet.create({
   view: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-around',
+    flex: 2,
     flexDirection: 'row',
-    backgroundColor: 'pink',
-
+    backgroundColor: 'beige'
   }
 })
 

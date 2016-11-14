@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux';
 import Clock from '../components/Clock';
 import TimerInput from '../components/TimerInput'
-import RunDisplay from '../components/RunDisplay'
+import RunTime from '../components/RunDisplay'
 import ResetContinue from '../components/ResetContinue'
 import {
   advanceAppMode,
@@ -18,23 +18,14 @@ import {
   setScreen
 } from '../actions/screen'
 
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    flexDirection: 'column',
-    flex: 1,
-    backgroundColor: '#786d5f',
-    backgroundColor: '#e5efe3'
-  },
-  nothing: {
-    flex: 1,
-    backgroundColor: '#82caff',
-  }
-});
-
 const Nothing = () => (
   <View style={styles.nothing}/>
+)
+
+const Duration = ({duration}) => (
+  <View style={styles.upper}>
+    <Text style={styles.time}>{duration}</Text>
+  </View>
 )
 
 const Lower = (props) => {
@@ -51,10 +42,9 @@ const Lower = (props) => {
 const Upper = (props) => {
   switch(props.app.mode[0]) {
     case 'RUN':
-      return (<RunDisplay {...props} />)
+      return (<RunTime {...props} />)
     default:
-      /* return (<ShowTime {...props} />)*/
-      return (<Nothing />)
+      return (<Duration duration={props.timer.duration} />)
   }
 }
 
@@ -65,6 +55,28 @@ const Timer = (props) => (
     <Lower {...props}/>
   </View>
 )
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    flex: 1,
+    backgroundColor: '#786d5f',
+    backgroundColor: '#e5efe3'
+  },
+  nothing: {
+    flex: 2,
+    backgroundColor: '#82caff',
+  },
+  upper: {
+    flex: 2,
+    justifyContent: 'flex-end',
+  },
+  time: {
+    fontSize: 28,
+    color: '#493d26',
+  }
+
+});
 
 const mapStateToProps = (state) => {
   return {

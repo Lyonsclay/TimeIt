@@ -27,7 +27,10 @@ const Clock = (props) => {
   const height = width
 
   return (
-      <TouchableOpacity onPress={props.advanceAppMode}>
+    <TouchableOpacity
+      onPress={props.advanceAppMode}
+      style={styles.container}
+    >
         <Face
           strokeWidth={strokeWidth}
           width={width + strokeWidth}
@@ -51,6 +54,9 @@ const Clock = (props) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: 'pink',
+    justifyContent: 'center',
   },
   clock: {
   }

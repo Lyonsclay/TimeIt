@@ -40,7 +40,8 @@ const SetTime = (props) => {
 
 const styles = StyleSheet.create({
   view: {
-    flex: 1,
+    flex: 2,
+    justifyContent: 'flex-start',
     height: 100,
   }
 })

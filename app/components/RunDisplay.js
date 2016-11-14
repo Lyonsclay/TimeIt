@@ -49,8 +49,8 @@ class RunDisplay extends Component {
 
 const styles = StyleSheet.create({
   view: {
-    flex: 1,
-    justifyContent: 'center',
+    flex: 2,
+    justifyContent: 'flex-end',
   },
   time: {
     fontSize: 28,
