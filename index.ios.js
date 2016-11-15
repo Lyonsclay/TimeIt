@@ -24,7 +24,7 @@ const initialState = {
   timer: {
     duration: 30,
     startTime: 0,
-    remainder: 0,
+    remainder: 30,
   },
   screen: {
     width: 0,

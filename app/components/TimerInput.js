@@ -7,7 +7,7 @@ const DurationPicker = (props) => {
 
   return (
     <Picker
-      selectedValue={props.timer.duration}
+      selectedValue={props.timer.duration.toString()}
       style={styles.picker}
       onValueChange={(duration) => props.setDuration(duration)}
       itemStyle={styles.number}

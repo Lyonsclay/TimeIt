@@ -21,7 +21,6 @@ import {
 const Nothing = () => (
   <View style={styles.nothing}/>
 )
-
 const Duration = ({duration}) => (
   <Text style={styles.time}>{duration}</Text>
 )
@@ -29,14 +28,16 @@ const Duration = ({duration}) => (
 const Lower = (props) => {
   switch(props.app.mode[0]) {
     case 'FREEZE':
-      return (<ResetContinue {...props} />)
+      return ((props.timer.remainder) ? <ResetContinue {...props} /> : <Nothing />)
     case 'SELECT':
       return (<TimerInput {...props} />)
+    case 'INIT':
+      /* props.setRemainder(props.timer.duration)*/
+      return (<Nothing />)
     default:
       return (<Nothing />)
   }
 }
-
 const Upper = (props) => {
   switch(props.app.mode[0]) {
     case 'RUN':
