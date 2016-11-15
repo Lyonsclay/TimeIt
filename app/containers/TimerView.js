@@ -23,9 +23,7 @@ const Nothing = () => (
 )
 
 const Duration = ({duration}) => (
-  <View style={styles.upper}>
-    <Text style={styles.time}>{duration}</Text>
-  </View>
+  <Text style={styles.time}>{duration}</Text>
 )
 
 const Lower = (props) => {
@@ -50,9 +48,15 @@ const Upper = (props) => {
 
 const Timer = (props) => (
   <View style={styles.container}>
-    <Upper {...props} />
-    <Clock {...props} />
-    <Lower {...props}/>
+    <View style={styles.upper}>
+      <Upper {...props} />
+    </View>
+    <View style={styles.clock}>
+      <Clock {...props} />
+    </View>
+    <View style={styles.lower}>
+      <Lower {...props}/>
+    </View>
   </View>
 )
 
@@ -64,18 +68,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#e5efe3'
   },
   nothing: {
-    flex: 2,
-    backgroundColor: '#82caff',
-  },
-  upper: {
-    flex: 2,
-    justifyContent: 'flex-end',
   },
   time: {
     fontSize: 28,
     color: '#493d26',
+  },
+  upper: {
+    flex: 3,
+    justifyContent: 'flex-end',
+  },
+  clock: {
+    flex: 2,
+    justifyContent: 'flex-end',
+  },
+  lower: {
+    flex: 3,
+    justifyContent: 'flex-start',
   }
-
 });
 
 const mapStateToProps = (state) => {

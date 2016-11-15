@@ -6,31 +6,30 @@ import {
   Button
 } from 'react-native'
 
-const glow = () => {
-  alert('glow')
+const ResetContinue = (props) => {
+  const width = 2.5 * props.clock.diameter
+  const height = props.clock.diameter
+  return (
+    <View style={[styles.view, { width, height }]}>
+      <Button
+        onPress={props.advanceAppMode}
+        title="RESET"
+        color="brown"
+      />
+      <Button
+        onPress={props.reverseAppMode}
+        title="RESUME"
+        color="green"
+      />
+    </View>
+  )
 }
-
-const ResetContinue = (props) => (
-  <View style={styles.view}>
-    <Button
-      onHover={glow}
-      onPress={props.advanceAppMode}
-      title="RESET"
-      color="brown"
-      />
-    <Button
-      onPress={props.reverseAppMode}
-      title="CONTINUE"
-      color="green"
-      />
-  </View>
-)
 
 const styles = StyleSheet.create({
   view: {
-    flex: 2,
     flexDirection: 'row',
-    backgroundColor: 'beige'
+    justifyContent: 'space-between',
+    alignItems: 'center',
   }
 })
 

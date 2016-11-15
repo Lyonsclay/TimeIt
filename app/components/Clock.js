@@ -29,34 +29,32 @@ const Clock = (props) => {
   return (
     <TouchableOpacity
       onPress={props.advanceAppMode}
-      style={styles.container}
+      style={[styles.container, { height: width + strokeWidth }]}
     >
-        <Face
+      <Face
+        strokeWidth={strokeWidth}
+        width={width + strokeWidth}
+        height={height + strokeWidth}
+        radius={radius}
+        {...props}
+      />
+      <View style={styles.clock} >
+        <Hand
+          style={styles.clock}
           strokeWidth={strokeWidth}
-          width={width + strokeWidth}
-          height={height + strokeWidth}
+          width={width}
+          height={height}
           radius={radius}
           {...props}
         />
-        <View style={styles.clock} >
-          <Hand
-            style={styles.clock}
-            strokeWidth={strokeWidth}
-            width={width}
-            height={height}
-            radius={radius}
-            {...props}
-          />
-        </View>
-      </TouchableOpacity>
+      </View>
+    </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'pink',
-    justifyContent: 'center',
+
   },
   clock: {
   }

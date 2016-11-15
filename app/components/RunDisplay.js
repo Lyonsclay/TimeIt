@@ -40,18 +40,12 @@ class RunDisplay extends Component {
 
   render() {
     return (
-      <View style={styles.view}>
-        <Text style={styles.time}>{this.state.spin}</Text>
-      </View>
+      <Text style={styles.time}>{this.state.spin}</Text>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  view: {
-    flex: 2,
-    justifyContent: 'flex-end',
-  },
   time: {
     fontSize: 28,
     color: '#493d26',
