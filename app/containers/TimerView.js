@@ -31,9 +31,6 @@ const Lower = (props) => {
       return ((props.timer.remainder) ? <ResetContinue {...props} /> : <Nothing />)
     case 'SELECT':
       return (<TimerInput {...props} />)
-    case 'INIT':
-      /* props.setRemainder(props.timer.duration)*/
-      return (<Nothing />)
     default:
       return (<Nothing />)
   }

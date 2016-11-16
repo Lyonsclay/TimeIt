@@ -1,8 +1,7 @@
-import React, {
-  Component
+import React, {Component
 } from 'react'
 import {
-  connect
+  cnonnect
 } from 'react-redux'
 import {
   StyleSheet,
@@ -10,10 +9,15 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
+import Svg, {
+  Line,
+  G,
+} from 'react-native-svg';
 import Face from './Face';
 import MovingHand from './MovingHand'
+import StaticHand from './StaticHand'
 
-const TicToc = ({props}) => {
+const Draw = ({props, children}) => {
   const {
     diameter,
     strokeWidth
@@ -28,13 +32,27 @@ const TicToc = ({props}) => {
     height,
     radius,
   }
-
-  return (
-    <View>
-      <Text>{JSON.stringify(props)}</Text>
-    </View>
-  )
+  return React.createElement(children, props)
 }
+
+const NotMovingHand = ({width, radius, height, strokeWidth}) => (
+  <Svg width={width} height={height}>
+    <Line
+      x1={radius}
+      y1={0.20 * radius}
+      x2={radius}
+      y2={radius}
+      stroke='brown'
+      strokeWidth={2 * strokeWidth}
+      strokeLinecap='round'
+    /returreturnn>
+  </Svg>
+)
+
+const Hand = (props) => (
+  <Draw props={props} children={NotMovingHand} />
+)
+
 
 const Clock = (props) => {
   const {
@@ -49,38 +67,22 @@ const Clock = (props) => {
   const width = diameter + strokeWidth * 2
   const height = width
 
-  const MovingHanding = (props) => (
-    <TicToc {...props} >
-      <MovingHand />
-    </TicToc>
-  )
-  const xxMovingHanding = ({props}) => (
-    <View style={{
-      width: 100,
-    }}>
-      <Text style={{
-        fontSize: 20,
-        color: 'black'
-      }}>{JSON.stringify(props)}</Text>
-    </View>
-  )
-  return (
-    <TouchableOpacity
-      onPress={props.advanceAppMode}
-      style={[styles.container, { height: width + strokeWidth }]}
-    >
-      <Face
-        strokeWidth={strokeWidth}
-        width={width + strokeWidth}
-        height={height + strokeWidth}
-        radius={radius}
-        {...props}
-      />
-      <View>
-        <MovingHanding props={props} />
-      </View>
-    </TouchableOpacity>
-  )
+return <Hand {...props} />
+  /* return (
+   *   <TouchableOpacity
+   *     onPress={props.advanceAppMode}
+   *     style={[styles.container, { height: width + strokeWidth }]}
+   *   >
+   *     <Face
+   *       strokeWidth={strokeWidth}
+   *       width={width + strokeWidth}
+   *       height={height + strokeWidth}
+   *       radius={radius}
+   *       {...props}
+   *     />
+   *     <Hand {...props} />
+   *   </TouchableOpacity>
+   * )*/
 }
 
 const styles = StyleSheet.create({
