@@ -17,6 +17,7 @@ const StaticHand = (props) => {
     radius,
     strokeWidth,
   } = props;
+
   return (
     <Svg width={width} height={height}>
       <Line
@@ -31,3 +32,5 @@ const StaticHand = (props) => {
     </Svg>
   )
 }
+
+export default StaticHand

@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e5efe3'
   },
   nothing: {
+
   },
   time: {
     fontSize: 28,

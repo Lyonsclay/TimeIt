@@ -2,10 +2,10 @@ import React from 'react';
 import {
   View,
   Animated,
-  Easing
+  Easing,
 } from 'react-native';
 import Svg, {
-  Circle, G
+  Circle,
 } from 'react-native-svg';
 
 const Face = (props) => {
