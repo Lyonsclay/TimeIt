@@ -48,7 +48,7 @@ const Clock = (props) => {
         radius={radius}
         {...props}
       />
-      <Hand {...newProps} />
+      <MovingHand {...newProps} />
     </TouchableOpacity>
   )
 }

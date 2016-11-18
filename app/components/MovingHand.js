@@ -14,48 +14,57 @@ import Svg, {
 class MovingHand extends Component {
   constructor(props){
     super(props)
-    const remainder = props.timer.remainder
-    const duration = props.timer.duration
+    const { remainder, duration } = props.timer
     const start =  duration - remainder
     this.state = {
       wind: new Animated.Value(start),
       mode: props.app.mode[0],
+      duration,
+      remainder,
+      start
     }
   }
+
+  _start = () => {
+    Animated.timing(
+      this.state.wind,
+      {
+        toValue: 1,
+        duration: this.state.start * 1000,
+        easing: Easing.none,
+      }
+    ).start(this._finish)
+  }
+
+  _stop = (status) => {
+    this.state.wind.stopAnimation((elapse) => this.props.setRemainder(this.state.duration * elapse))
+    alert(JSON.stringify(this.props.timer.remainder))
+  }
+
   _finish = (status) => {
     if (status.finished) {
       this.props.advanceAppMode()
       this.props.setRemainder(0)
     }
   }
-  componentDidMount () {
-    this.setState({
-      motionStyle: {
-        transform: [{
-          rotate: this.state.wind.interpolate({
-            inputRange: [0, 1],
-            outputRange: ['0deg', '360deg']
-          })
-        }]
-      }
-    })
+
+  componentWillMount () {
+
   }
 
-  componentDidUpdate() {
-    if (this.props.app.mode[0] === 'RUN') {
-      Animated.timing(
-        this.state.wind,
-        {
-          toValue: 1,
-          duration: this.props.timer.duration * 1000,
-          easing: Easing.none
+  componentWillReceiveProps() {
+    const { duration, start } = this.state
+    const remainder = this.props.timer.remainder
+    console.log('remainder    ::     duration    ::      start  ')
+    console.log(remainder, duration, start)
+    switch (this.props.app.mode[0]) {
+      case 'RUN':
+        return this._start()
+      case 'FREEZE':
+        if (start === 0) {
+          return this._stop()
         }
-      ).start(this._finish)
     }
-  }
-
-  componentWillUnmount() {
-    /* this.state.wind.stopAnimation(this.props.setRemainder)*/
   }
 
   render() {
@@ -65,9 +74,19 @@ class MovingHand extends Component {
       radius,
       strokeWidth,
     } = this.props;
+    const { start, duration } = this.state 
+    const angle = ((start / duration) * 360).toString() + 'deg' 
+    const motionStyle = {
+      transform: [{
+        rotate: this.state.wind.interpolate({
+          inputRange: [0, 1],
+          outputRange: [angle, '360deg']
+        })
+      }]
+    }
 
     return (
-      <Animated.View style={this.state.motionStyle}>
+      <Animated.View style={motionStyle}>
         <Svg width={width} height={height}>
           <Line
             x1={radius}

@@ -15,11 +15,11 @@ const Face = (props) => {
     radius,
     strokeWidth
   } = props;
-  const cx = radius + strokeWidth / 2;
+  const cx = radius + strokeWidth / 2
   const cy = cx;
   const faceStyle = {
     position: 'absolute',
-  };
+  }
   let pulse = new Animated.Value(0)
 
   const visualAlarm = () => {
@@ -30,19 +30,20 @@ const Face = (props) => {
           toValue: 1,
           duration: 250,
           easing: Easing.linear
-        }),
+        }
+      ),
       Animated.timing(
         pulse,
         {
           toValue: 0,
           duration: 250,
           easing: Easing.ease
-        })
-    ]
-    ).start(visualAlarm)
+        }
+      )
+    ]).start(visualAlarm)
   }
   const activateAlarm = ((props.timer.remainder === 0) && (props.app.mode[0] === 'FREEZE'))
-  const alarmStyle = (activateAlarm) ? { opacity: pulse } : {} 
+  const alarmStyle = (activateAlarm) ? { opacity: pulse } : {}
 
   if (activateAlarm) {
     visualAlarm()
