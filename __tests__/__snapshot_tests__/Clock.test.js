@@ -8,6 +8,7 @@ import RunDisplay from '../../app/components/RunDisplay'
 
 jest.mock('../../node_modules/react-native-svg/elements/Circle.js', () => 'Circle')
 jest.mock('../../node_modules/react-native-svg/elements/Line.js', () => 'Line')
+
 const props = {
   app: {
     mode: ['INIT', 'SELECT', 'RUN', 'FREEZE']
@@ -27,25 +28,10 @@ const props = {
   }
 }
 
-const mockRNSVGSvgView = (props) => (
-  React.createElement(
-    'RNSVGSvgView',
-    props,
-    props.children,
-  )
-);
-
 describe('Clock', () => {
   it('renders', () => {
-    jest.resetModules();
+    const clock = renderer.create(<Clock {...props} />)
 
-    const rn = require('react-native'); // eslint-disable-line global-require
-    rn.Platform.OS = 'ios';
-    Object.defineProperty(rn, 'requireNativeComponent', {
-      get: () => jest.fn().mockReturnValue(mockRNSVGSvgView(props)),
-    });
-
-    expect(rn).toBeDefined()
-    expect(rn).toEqual()
+    expect(clock).toMatchSnapshot()
   })
 })
