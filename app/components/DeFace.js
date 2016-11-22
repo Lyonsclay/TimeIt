@@ -1,20 +1,18 @@
 var ReactART = require('ReactNativeART');
-var {
+const {
   Surface,
   Path,
   Group,
   Transform,
   Shape,
 } = ReactART;
+import Morph from 'art/morph/path'
 import React from 'react';
 import {
   View,
   Animated,
   Easing,
 } from 'react-native';
-import Svg, {
-  Circle,
-} from 'react-native-svg';
 
 const Face = (props) => {
   const {
@@ -58,12 +56,12 @@ const Face = (props) => {
   }
 
   return (
-    <Svg
+    <Surface
       style={faceStyle}
       width={width}
       height={height}
     >
-      <Circle
+      <Shape
         cx={cx}
         cy={cy}
         r={radius}
@@ -73,12 +71,12 @@ const Face = (props) => {
         strokeWidth={strokeWidth}
       />
       <Animated.View style={alarmStyle}>
-        <Svg
+        <Surface
           style={faceStyle}
           width={width}
           height={height}
         >
-          <Circle
+          <Shape
             cx={cx}
             cy={cy}
             r={radius}
@@ -87,11 +85,11 @@ const Face = (props) => {
             stroke='#728c00'
             strokeWidth={strokeWidth}
           />
-        </Svg>
+        </Surface>
       </Animated.View>
-    </Svg>
+    </Surface>
   );
 };
 
 export default Face;
-//
+

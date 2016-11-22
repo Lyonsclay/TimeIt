@@ -3,11 +3,13 @@ import {
   View,
   Animated,
   Easing,
+  ART,
 } from 'react-native';
 import Svg, {
   Circle,
 } from 'react-native-svg';
 
+const { Surface, Group, Shape, } = ART
 const Face = (props) => {
   const {
     width,
@@ -86,4 +88,4 @@ const Face = (props) => {
 };
 
 export default Face;
-//
+
