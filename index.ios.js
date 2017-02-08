@@ -16,6 +16,7 @@ import rootReducer from './app/reducers/rootReducer'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import TimerView from './app/containers/TimerView'
+import Test from './app/components/TestIt'
 
 const initialState = {
   app: {
@@ -43,7 +44,7 @@ const store = createStore(
 
 
 const TimeIt = () => {
-  return <Provider store={store}><TimerView /></Provider>
+  return <Provider store={store}><Test /></Provider>
 }
 
 AppRegistry.registerComponent('TimeIt', () => TimeIt)

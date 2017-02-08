@@ -10,7 +10,6 @@ import Svg, {
   Text
 } from 'react-native-svg';
 
-/* const MovingHand = (this.props) => {*/
 class MovingHand extends Component {
   constructor(props){
     super(props)
@@ -18,14 +17,12 @@ class MovingHand extends Component {
     const start =  duration - remainder
     this.state = {
       wind: new Animated.Value(start),
-      mode: props.app.mode[0],
       duration,
-      remainder,
       start
     }
   }
 
-  _start = () => {
+  componentDidMount() {
     Animated.timing(
       this.state.wind,
       {
@@ -33,38 +30,7 @@ class MovingHand extends Component {
         duration: this.state.start * 1000,
         easing: Easing.none,
       }
-    ).start(this._finish)
-  }
-
-  _stop = (status) => {
-    this.state.wind.stopAnimation((elapse) => this.props.setRemainder(this.state.duration * elapse))
-    alert(JSON.stringify(this.props.timer.remainder))
-  }
-
-  _finish = (status) => {
-    if (status.finished) {
-      this.props.advanceAppMode()
-      this.props.setRemainder(0)
-    }
-  }
-
-  componentWillMount () {
-
-  }
-
-  componentWillReceiveProps() {
-    const { duration, start } = this.state
-    const remainder = this.props.timer.remainder
-    console.log('remainder    ::     duration    ::      start  ')
-    console.log(remainder, duration, start)
-    switch (this.props.app.mode[0]) {
-      case 'RUN':
-        return this._start()
-      case 'FREEZE':
-        if (start === 0) {
-          return this._stop()
-        }
-    }
+    ).start()
   }
 
   render() {
@@ -75,12 +41,11 @@ class MovingHand extends Component {
       strokeWidth,
     } = this.props;
     const { start, duration } = this.state 
-    const angle = ((start / duration) * 360).toString() + 'deg' 
     const motionStyle = {
       transform: [{
         rotate: this.state.wind.interpolate({
           inputRange: [0, 1],
-          outputRange: [angle, '360deg']
+          outputRange: ['0deg', '360deg']
         })
       }]
     }
